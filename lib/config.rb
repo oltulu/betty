@@ -40,14 +40,14 @@ module BettyConfig
     if command.match(/^(turn|switch|the|\s)*speech\s+on$/i) || command.match(/^speak\s+to\s+me$/)
       responses << {
         :call_before => lambda { self.set("speech", true) },
-        :say => "Speech ON",
+        :say => "Konuşma AÇIK",
       }
     end
 
     if command.match(/^(turn|switch|the|\s)*speech\s+off$/i) || command.match(/^stop\s+speak(ing)?\s+to\s+me$/)
       responses << {
         :call_before => lambda { self.set("speech", false) },
-        :say => "Speech OFF"
+        :say => "Konuşma AÇIK"
       }
     end
     
