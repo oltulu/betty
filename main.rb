@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 require 'logger'
 
-$URL = 'https://github.com/pickhardt/betty'
-$VERSION = '0.1.7'
+$URL = 'https://github.com/oltulu/kanka'
+$VERSION = '0.1.8'
 $executors = []
-$LOG = Logger.new(File.open(ENV['HOME'] + '/.betty_history', 'a+'))
+$LOG = Logger.new(File.open(ENV['HOME'] + '/.kanka_history', 'a+'))
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file|
   begin
@@ -59,8 +59,8 @@ def interpret(command)
 end
 
 def help(command)
-  # betty --help find
-  # betty I need help with the find command
+  # kanka --help find
+  # kanka I need help with the find command
   command = command.sub("I need","").sub("help","").sub("me","").sub("with","").sub("the","").sub("command","").sub("--","").strip
   responses = []
   $executors.each do |executor|
@@ -138,7 +138,7 @@ def speak(text)
       if has_afplay || has_mpg123
          require 'open-uri'
          text = sanitize(text)
-         speech_path = '/tmp/betty_speech.mp3'
+         speech_path = '/tmp/kanka_speech.mp3'
 
          if text != ''
            url = 'http://translate.google.com/translate_tts?tl=en&q=' + text
@@ -168,8 +168,8 @@ def speak(text)
 end
 
 # needs BettyConfig.get("web")!="false"
-# edit ~/.bettyconfig or say 'use web'
-# example: "betty what is the weather"
+# edit ~/.kankaconfig or say 'use web'
+# example: "kanka what is the weather"
 def web_query(command)
   require 'net/http'
   encoded = URI.escape(command)
@@ -246,7 +246,7 @@ def main(commands)
     which_to_run = get_input_integer(1, responses.length, :allow_no => true)
     run(responses[which_to_run - 1]) if which_to_run
   else
-    # edit ~/.bettyconfig or say 'use web'
+    # edit ~/.kankaconfig or say 'use web'
     if BettyConfig.get("web") && !command.empty? && !command.match("help")
       say web_query(command).sub("Jeannie",BettyConfig.get("name"))
     else

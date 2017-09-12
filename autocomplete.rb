@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-`complete -o bashdefault -o default -o filenames -o nospace -C ~/betty/autocomplete.rb betty`
+`complete -o bashdefault -o default -o filenames -o nospace -C ~/betty/autocomplete.rb kanka`
 # This should be called only once upon installation, but it doesn't hurt if it gets called multiple times.
 
 if ARGV.length==0
-  puts "Betty: Autocomplete installed."
+  puts "Kanka: Autocomplete installed."
   exit 
 end
 
@@ -12,7 +12,7 @@ words = ARGV[1..-1].reverse.join(" ")
 last = ARGV[2]
 current = ARGV[1]
 
-if last == "betty"
+if last == "kanka"
   puts "count" if "count".start_with? current
   puts "find" if "find".start_with? current
   puts "show" if "show".start_with? current
