@@ -16,7 +16,7 @@ module Fun
 
     if command.match(/^what\s+if\s+batman\s+does\snot\s+have\s+a?n?y?\s*kryptonite$/i)
       responses << {
-        say: "Batman always has kryptonite"
+        say: "Batman her zaman kryptonite sahip olur"
       }
     end
 
@@ -36,7 +36,7 @@ module Fun
     
     if command.match(/^sudo\s+make\s+me\s+a\s+(.+)$/i)
       responses << {
-        :say => "I think you meant to place sudo at the start of the command."
+        :say => "Bence komutunın başına sudo yazmak istediniz."
       }
     end
     
