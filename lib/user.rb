@@ -7,14 +7,14 @@ module User
   def self.interpret(command)
     responses = []
     
-    if command.match(/^who\s+am\si$/i) || command.match(/^what\'?s?(\s+is)?\s+my\s(user)?name\??$/i)
+    if command.match(/^who\s+am\si$/i) || command.match(/^benim\'?s?(\s+ismim)?\s+adım\s(user)?nedir\??$/i)
       responses << {
         :command => "whoami",
-        :explanation => "Gets your system username."
+        :explanation => "Kullanıcı adınız alınıyor."
       }
     end
     
-    if command.match(/^who\s+am\si$/i) || command.match(/^what\'?s?(\s+is)?\s+my\s((real|full|actual)\s+)?name\??$/i)
+    if command.match(/^who\s+am\si$/i) || command.match(/^what\'?s?(\s+is)?\s+benim\s((gerçek|tam|asıl)\s+)?adım\??$/i)
       responses << {
         :command => "finger $(whoami) | sed 's/.*: *//;q'",
         :explanation => "Gets your full name."
