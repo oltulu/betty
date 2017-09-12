@@ -1,4 +1,4 @@
-module User  
+ kmodule User  
   def self.has_command?(command)
     response = `which #{ command }`
     response != ""
@@ -76,8 +76,8 @@ module User
     commands << {
       :category => "User",
       :description => 'Show information related to your \033[34mUser\033[0m accounts',
-      :usage => ["whats my username",
-      "whats my real name",
+      :usage => ["benim kullanıcı adım nedir",
+      "benim gerçek adım nedir",
       "whats my ip address",
       "who else is logged in",
       "whats my version of ruby"]
