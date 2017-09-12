@@ -7,24 +7,24 @@
   def self.interpret(command)
     responses = []
     
-    if command.match(/^who\s+am\si$/i) || command.match(/^benim\'?s?(\s+ismim)?\s+adım\s(user)?nedir\??$/i)
+    if command.match(/^who\s+am\si$/i) || command.match(/^what\'?s?(\s+is)?\s+my\s(user)?name\??$/i)
       responses << {
         :command => "whoami",
         :explanation => "Kullanıcı adınız alınıyor."
       }
     end
     
-    if command.match(/^who\s+am\si$/i) || command.match(/^what\'?s?(\s+is)?\s+benim\s((gerçek|tam|asıl)\s+)?adım\??$/i)
+    if command.match(/^who\s+am\si$/i) || command.match(/^what\'?s?(\s+is)?\s+my\s((real|full|actual)\s+)?name\??$/i)
       responses << {
         :command => "finger $(whoami) | sed 's/.*: *//;q'",
-        :explanation => "Gets your full name."
+        :explanation => "Gerçek adınız alınıyor"
       }
     end
 
     if command.match(/^what\'?s?(\s+is)?(\s+my)?\s?(public|external|internal|private|local)?(\s+ip)?\s?(address)?\??$/i)
       responses << {
         :command => "ifconfig", 
-        :explanation => "Gets your internal ip address."
+        :explanation => "İp adresini alınıyor."
         } if not command.match(/(public|external)/)
       responses << {
         :command => "curl -sL http://pannous.net/ip.php", # ifconfig.me is slooow!
@@ -35,14 +35,14 @@
     if command.match(/^who\'?s?(\s+else)?(\s+is)?\s(logged|signed|connected)\s+?in\??$/i)
       responses << {
         :command => "who | cut -f 1 -d ' ' | uniq",
-        :explanation => "Lists who is logged in on this machine."
+        :explanation => "Bu makineye kimlerin girdiğini listele."
       }
     end
 
     if command.match(/^where\s+am\si$/i)
       responses << {
         :command => "pwd",
-        :explanation => "Shows you your current directory."
+        :explanation => "Geçerli dizini gösterir."
       }
     end
     
